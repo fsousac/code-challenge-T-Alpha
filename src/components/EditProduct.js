@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import GetProduct from "./GetProduct";
+import "./EditProduct.css";
+import Sidebar from "./Sidebar";
 
 const EditProduct = () => {
   if (localStorage.getItem("logged") !== "true") {
@@ -86,7 +88,9 @@ const EditProduct = () => {
   };
 
   return (
-    <div>
+    <div className="editProductBody">
+      <Sidebar />
+      <br />
       <h2>Editar Produto</h2>
       <form onSubmit={handleEditProduct}>
         <div>

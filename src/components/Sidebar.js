@@ -7,7 +7,7 @@ import Delete from "../assets/cancel.png";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
-  const [productId, setProductId] = useState("");
+  const [productId, setProductId] = useState(0);
 
   const handleIdChange = (e) => {
     setProductId(e.target.value);

@@ -1,28 +1,27 @@
-.createProductBody {
+/* Estilos para o componente EditProduct */
+.editProductBody {
   width: 100vw;
   height: 100vh;
   color: aliceblue;
   background: linear-gradient(#2836d3, #252525 60%);
 }
 
-.createProductBody h2 {
+.editProductBody h2 {
   text-align: center;
   font-size: 52px;
 }
 
-.createProductBody form {
+.editProductBody form {
   text-align: left;
   margin-left: 20%;
 }
 
-.createProductBody label {
+.editProductBody label {
   font-size: 28px;
 }
 
-#name,
-#description,
-#price,
-#stock {
+.editProductBody input,
+.editProductBody textarea {
   background-color: #afafaf;
   margin-top: 2%;
   margin-left: 2%;
@@ -30,20 +29,15 @@
   font-size: 25px;
 }
 
-.createProductBody textarea {
-  background-color: #afafaf;
-  margin-top: 2%;
-  margin-left: 2%;
-  width: 25vw;
-  height: 150px;
-  font-size: 25px;
-}
-
-.createProductBody button {
+.editProductBody button {
   width: 15vw;
   margin: 2%;
   margin-left: 70%;
   font-size: 25px;
   border-radius: 15px;
   background-color: crimson;
+}
+
+.editProductBody .currentElement {
+  margin-top: 40px;
 }

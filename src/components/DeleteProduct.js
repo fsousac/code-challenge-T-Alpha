@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Sidebar from "./Sidebar";
+import "./DeleteProduct.css";
 
 const DeleteProduct = ({ productId }) => {
   const [message, setMessage] = useState(null);
@@ -27,7 +29,9 @@ const DeleteProduct = ({ productId }) => {
   };
 
   return (
-    <div>
+    <div className="deleteProductBody">
+      <Sidebar />
+      <br />
       <h2 onLoad={handleDelete}>Deletar Produto</h2>
       <button onClick={handleDelete}>Deletar Produto</button>
       {message && <p>{message}</p>}
