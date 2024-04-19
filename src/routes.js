@@ -7,12 +7,11 @@ import GetProduct from "./components/GetProduct";
 import EditProduct from "./components/EditProduct";
 import DeleteProduct from "./components/DeleteProduct";
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route element={<Home />} path="/" exact />
+      <Route element={<CreateProduct />} path="/" exact />
       <Route element={<Login />} path="/login" />
       <Route element={<Register />} path="/register" />
       <Route element={<CreateProduct />} path="/new-product" />

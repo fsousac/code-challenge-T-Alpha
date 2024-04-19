@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-const GetProduct = ({ productId }) => {
-  if (localStorage.getItem("logged") !== "true") {
-    window.location.replace("http://localhost:3000/login");
-  }
-  const [product, setProduct] = useState(null);
+const DeleteProduct = ({ productId }) => {
+  const [message, setMessage] = useState(null);
 
-  useEffect(() => {
+  const handleDelete = () => {
     const options = {
-      method: "GET",
-      url: `https://interview.t-alpha.com.br/api/products/get-one-product/${productId}`,
+      method: "DELETE",
+      url: `https://interview.t-alpha.com.br/api/products/delete-product/${productId}`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -21,36 +18,21 @@ const GetProduct = ({ productId }) => {
       .request(options)
       .then((response) => {
         console.log(response.data);
-        setProduct(response.data);
+        setMessage(response.data.message);
       })
       .catch((error) => {
-        console.error("Erro ao obter produto:", error);
+        console.error("Erro ao deletar produto:", error);
+        setMessage("Erro ao deletar produto");
       });
-  }, [productId]);
+  };
 
   return (
     <div>
-      {product ? (
-        <div>
-          <h2>Detalhes do Produto</h2>
-          <p>
-            <strong>Nome:</strong> {product.name}
-          </p>
-          <p>
-            <strong>Descrição:</strong> {product.description}
-          </p>
-          <p>
-            <strong>Preço:</strong> R$ {product.price}
-          </p>
-          <p>
-            <strong>Estoque:</strong> {product.stock}
-          </p>
-        </div>
-      ) : (
-        <p>Carregando...</p>
-      )}
+      <h2 onLoad={handleDelete}>Deletar Produto</h2>
+      <button onClick={handleDelete}>Deletar Produto</button>
+      {message && <p>{message}</p>}
     </div>
   );
 };
 
-export default GetProduct;
+export default DeleteProduct;

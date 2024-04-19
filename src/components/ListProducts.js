@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Sidebar from "./Sidebar";
+import "./ListProducts.css";
 
 const ListProducts = () => {
   if (localStorage.getItem("logged") !== "true") {
@@ -28,16 +30,26 @@ const ListProducts = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Lista de Produtos</h2>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <strong>{product.name}</strong> - {product.description} - R${" "}
-            {product.price} - Estoque: {product.stock}
-          </li>
-        ))}
-      </ul>
+    <div className="listProductsBody">
+      <Sidebar />
+      <br />
+      <div className="allProducts">
+        <h2>Lista de todos os Produtos</h2>
+        <ul>
+          {products.map((product) => (
+            <li key={product.id}>
+              <strong>{product.name}</strong> <br /> {product.description}{" "}
+              <br /> R$ {product.price} <br /> Estoque: {product.stock}
+              <br />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="findProduct">
+        <h2>Pesquisar um produto</h2>
+        <input type="number" placeholder="Id do Produto"></input>
+        <div className="search"></div>
+      </div>
     </div>
   );
 };

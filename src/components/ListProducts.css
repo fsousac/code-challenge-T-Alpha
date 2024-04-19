@@ -1,0 +1,50 @@
+/* Estilos para o componente ListProducts */
+.listProductsBody {
+  width: 100vw;
+  height: 100%;
+  color: aliceblue;
+  display: flex;
+  background: linear-gradient(#2836d3, #252525 60%);
+}
+
+.allProducts,
+.findProduct {
+  margin-top: 5%;
+  width: 45vw;
+  height: 100%;
+}
+
+.listProductsBody h2 {
+  text-align: center;
+  font-size: 52px;
+}
+
+.listProductsBody ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listProductsBody li {
+  font-size: 28px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.listProductsBody li strong {
+  font-weight: bold;
+}
+
+.listProductsBody li span {
+  font-weight: normal;
+}
+
+.listProductsBody li button {
+  font-size: 20px;
+  border: none;
+  background-color: crimson;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}

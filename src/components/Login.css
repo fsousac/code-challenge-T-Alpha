@@ -1,0 +1,42 @@
+.loginBody {
+  width: 100vw;
+  height: 100vh;
+  color: aliceblue;
+  background: linear-gradient(#2836d3, #252525 60%);
+}
+
+.loginBody h2 {
+  text-align: center;
+  font-size: 52px;
+}
+.loginBody form {
+  text-align: left;
+  margin-left: 20%;
+}
+.loginBody label {
+  font-size: 28px;
+}
+
+.loginBody input {
+  background-color: #afafaf;
+  margin-top: 2%;
+  margin-left: 2%;
+  width: 25vw;
+  font-size: 25px;
+}
+
+.loginBody button {
+  width: 15vw;
+  margin: 2%;
+  font-size: 25px;
+  margin-left: 70%;
+  border-radius: 15px;
+  background-color: crimson;
+}
+
+.registerSection,
+.registerSection a {
+  color: cornflowerblue;
+  margin-top: -3%;
+  margin-left: 42%;
+}

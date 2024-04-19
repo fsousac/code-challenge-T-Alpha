@@ -1,5 +1,6 @@
 import AppRouter from "./routes";
 import { BrowserRouter } from "react-router-dom";
+import "./App.css";
 
 function App() {
   let verified = 0;

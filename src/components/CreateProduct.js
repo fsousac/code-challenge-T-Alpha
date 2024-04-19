@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Sidebar from "./Sidebar";
+import "./CreateProduct.css";
 
 const CreateProduct = () => {
   if (localStorage.getItem("logged") !== "true") {
@@ -62,7 +64,9 @@ const CreateProduct = () => {
   };
 
   return (
-    <div>
+    <div className="createProductBody">
+      <Sidebar />
+      <br />
       <h2>Criar Produto</h2>
       <form onSubmit={handleCreateProduct}>
         <div>

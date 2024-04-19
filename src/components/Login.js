@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
 
 function Login() {
   localStorage.setItem("logged", false);
@@ -47,11 +48,6 @@ function Login() {
         console.log(error);
       });
   };
-  const showToken = (e) => {
-    if (token !== null) {
-      console.log(localStorage.getItem("token"));
-    }
-  };
 
   let navigate = useNavigate();
   const loadHome = (e) => {
@@ -65,7 +61,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="loginBody">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
@@ -94,11 +90,12 @@ function Login() {
         <button type="submit" onClick={loadHome}>
           Entrar
         </button>
-        <button type="button" onClick={showToken}>
-          Mostrar Token
-        </button>
       </form>
-      <Link to="/register">Registrar-se</Link>
+      <div className="registerSection">
+        <Link to="/register" color="inherit">
+          Registrar-se
+        </Link>
+      </div>
     </div>
   );
 }

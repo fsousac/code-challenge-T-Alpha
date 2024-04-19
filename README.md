@@ -1,12 +1,8 @@
-# Getting Started with Create React App
+# Code Challenge T-Alpha
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Utilize o `npm install` para instalar as dependências
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
+Utilize `npm start` para iniciar o projeto
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

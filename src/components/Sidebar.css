@@ -1,0 +1,42 @@
+.homeBody {
+  width: 100vw;
+  height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: space-evenly;
+  vertical-align: auto;
+  background: linear-gradient(#5960af, #0a0097 60%);
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+}
+
+.sidebar img,
+.sidebar div img {
+  width: 5vw;
+  height: 90%;
+  margin-top: 5%;
+  cursor: pointer;
+}
+
+.sidebar p {
+  color: white;
+  position: fixed;
+  font-size: 32px;
+  top: 2vh;
+  left: 1vw;
+}
+
+.idSelector {
+  position: relative;
+  background-color: #252525;
+  color: white;
+  font-size: 28px;
+  padding: 0;
+  top: 1.3vh;
+  left: 95vw;
+  width: 3vw;
+  height: 7vh;
+}
