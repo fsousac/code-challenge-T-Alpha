@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const ListProducts = () => {
+  if (localStorage.getItem("logged") !== "true") {
+    window.location.replace("http://localhost:3000/login");
+  }
   const [products, setProducts] = useState([]);
 
   useEffect(() => {

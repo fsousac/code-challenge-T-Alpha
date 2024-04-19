@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const CreateProduct = () => {
+  if (localStorage.getItem("logged") !== "true") {
+    window.location.replace("http://localhost:3000/login");
+  }
   const options = {
     method: "POST",
     url: "https://interview.t-alpha.com.br/api/products/create-product",

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Register = () => {
+  let token = "";
   const options = {
     method: "POST",
     url: "https://interview.t-alpha.com.br/api/auth/register",
@@ -43,7 +45,10 @@ const Register = () => {
       .then((response) => {
         responseBody = response.data;
         if (responseBody.success === true) {
-          console.log("Registro feito com sucesso");
+          console.log("Login feito com sucesso");
+          token = responseBody.data.token;
+          localStorage.setItem("logged", true);
+          localStorage.setItem("token", token);
         } else {
           console.log(responseBody.message);
         }
@@ -119,6 +124,7 @@ const Register = () => {
         </div>
         <button type="submit">Cadastrar</button>
       </form>
+      <Link to="/login">Logar</Link>
     </div>
   );
 };

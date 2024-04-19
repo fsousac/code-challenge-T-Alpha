@@ -1,24 +1,16 @@
-import Routes from "./routes";
-import { Route, BrowserRouter } from "react-router-dom";
-import Login from "./components/Login";
-import ListProducts from "./components/ListProducts";
-import Register from "./components/Register";
-import CreateProduct from "./components/CreateProduct";
-import GetProduct from "./components/GetProduct ";
-import EditProduct from "./components/EditProduct";
-import DeleteProduct from "./components/DeleteProduct";
-import "./App.css";
+import AppRouter from "./routes";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
+  let verified = 0;
+  if (verified === 0) {
+    window.addEventListener("load", localStorage.setItem("logged", false));
+    verified = 1;
+  }
   return (
-    // <Routes />
-    <div>
-      <Login />
-      <Register />
-      <CreateProduct />
-      <EditProduct />
-      <ListProducts />
-    </div>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
 

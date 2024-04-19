@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import GetProduct from "./GetProduct";
 
 const EditProduct = () => {
+  if (localStorage.getItem("logged") !== "true") {
+    window.location.replace("http://localhost:3000/login");
+  }
   const { productId } = useParams();
   const options = {
     method: "PATCH",
@@ -130,6 +134,12 @@ const EditProduct = () => {
         </div>
         <button type="submit">Salvar Alterações</button>
       </form>
+
+      <section className="currentElement">
+        <br />
+        <h2>Cadastro do Produto:</h2>
+        <GetProduct />
+      </section>
     </div>
   );
 };

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  localStorage.setItem("logged", false);
+  localStorage.setItem("token", null);
   let token = null;
   const options = {
     method: "POST",
@@ -33,6 +36,9 @@ function Login() {
         if (responseBody.success === true) {
           console.log("Login feito com sucesso");
           token = responseBody.data.token;
+          localStorage.setItem("logged", true);
+          localStorage.setItem("token", token);
+          loadHome();
         } else {
           console.log(responseBody.message);
         }
@@ -40,12 +46,17 @@ function Login() {
       .catch((error) => {
         console.log(error);
       });
-    return token;
   };
-  const saveToken = (e) => {
+  const showToken = (e) => {
     if (token !== null) {
-      localStorage.setItem("token", token);
       console.log(localStorage.getItem("token"));
+    }
+  };
+
+  let navigate = useNavigate();
+  const loadHome = (e) => {
+    if (responseBody.success === true) {
+      navigate("/");
     }
   };
 
@@ -80,11 +91,14 @@ function Login() {
             minLength={6}
           />
         </div>
-        <button type="submit">Entrar</button>
-        <button type="button" onClick={saveToken}>
+        <button type="submit" onClick={loadHome}>
+          Entrar
+        </button>
+        <button type="button" onClick={showToken}>
           Mostrar Token
         </button>
       </form>
+      <Link to="/register">Registrar-se</Link>
     </div>
   );
 }
