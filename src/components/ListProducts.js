@@ -1,58 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const ListProducts = () => {
-  const [credentials, setCredentials] = useState({
-    taxNumber: "",
-    password: "",
-  });
+  const [products, setProducts] = useState([]);
 
-  const handleListProducts = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      url: "https://interview.t-alpha.com.br/api/products/get-all-products",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
 
-    try {
-      const response = await axios.post(
-        "https://interview.t-alpha.com.br/api/auth/ListProducts",
-        credentials
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error("ListProducts failed:", error);
-    }
-  };
-
-  const handleChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
-  };
+    axios
+      .request(options)
+      .then((response) => {
+        setProducts(response.data.data);
+      })
+      .catch((error) => {
+        console.error("Erro ao obter lista de produtos:", error);
+      });
+  }, []);
 
   return (
     <div>
-      <h2>ListProducts</h2>
-      <form onSubmit={handleListProducts}>
-        <div>
-          <label htmlFor="taxNumber">CPF ou CNPJ:</label>
-          <input
-            type="text"
-            id="taxNumber"
-            name="taxNumber"
-            value={credentials.taxNumber}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Senha:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Entrar</button>
-      </form>
+      <h2>Lista de Produtos</h2>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <strong>{product.name}</strong> - {product.description} - R${" "}
+            {product.price} - Estoque: {product.stock}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

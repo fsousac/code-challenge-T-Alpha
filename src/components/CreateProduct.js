@@ -5,7 +5,10 @@ const CreateProduct = () => {
   const options = {
     method: "POST",
     url: "https://interview.t-alpha.com.br/api/products/create-product",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
     data: {
       name: 'TV 55" 4K Full HD',
       description: "Televisão com cores vibrantes",
@@ -32,8 +35,8 @@ const CreateProduct = () => {
 
     options.data.name = productData.name;
     options.data.description = productData.description;
-    options.data.price = productData.price;
-    options.data.stock = productData.stock;
+    options.data.price = Number(productData.price);
+    options.data.stock = Number(productData.stock);
 
     axios
       .request(options)

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function Login() {
+  let token = null;
   const options = {
     method: "POST",
     url: "https://interview.t-alpha.com.br/api/auth/login",
@@ -17,6 +18,7 @@ function Login() {
     success: false,
     message: "",
     data: "",
+    token: "",
   };
 
   const handleLogin = async (e) => {
@@ -30,6 +32,7 @@ function Login() {
         responseBody = response.data;
         if (responseBody.success === true) {
           console.log("Login feito com sucesso");
+          token = responseBody.data.token;
         } else {
           console.log(responseBody.message);
         }
@@ -37,6 +40,13 @@ function Login() {
       .catch((error) => {
         console.log(error);
       });
+    return token;
+  };
+  const saveToken = (e) => {
+    if (token !== null) {
+      localStorage.setItem("token", token);
+      console.log(localStorage.getItem("token"));
+    }
   };
 
   const handleChange = (e) => {
@@ -71,6 +81,9 @@ function Login() {
           />
         </div>
         <button type="submit">Entrar</button>
+        <button type="button" onClick={saveToken}>
+          Mostrar Token
+        </button>
       </form>
     </div>
   );
