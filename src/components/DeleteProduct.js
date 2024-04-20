@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import "./DeleteProduct.css";
+import { useParams } from "react-router-dom";
 
-const DeleteProduct = ({ productId }) => {
+const DeleteProduct = () => {
+  if (localStorage.getItem("logged") !== "true") {
+    window.location.replace("http://localhost:3000/login");
+  }
+  const productId = Number(useParams().id);
   const [message, setMessage] = useState(null);
 
   const handleDelete = () => {
@@ -15,15 +20,12 @@ const DeleteProduct = ({ productId }) => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     };
-
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data);
         setMessage(response.data.message);
       })
       .catch((error) => {
-        console.error("Erro ao deletar produto:", error);
         setMessage("Erro ao deletar produto");
       });
   };

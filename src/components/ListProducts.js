@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "./Sidebar";
+import GetProduct from "./GetProduct";
 import "./ListProducts.css";
 
 const ListProducts = () => {
@@ -8,6 +9,8 @@ const ListProducts = () => {
     window.location.replace("http://localhost:3000/login");
   }
   const [products, setProducts] = useState([]);
+  const [searchProductId, setSearchProductId] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const options = {
@@ -29,6 +32,19 @@ const ListProducts = () => {
       });
   }, []);
 
+  const handleSearchProduct = () => {
+    setSelectedProduct(null);
+
+    const product = products.find(
+      (product) => product.id === Number(searchProductId)
+    );
+    if (product) {
+      setSelectedProduct(product);
+    } else {
+      setSelectedProduct("notFound");
+    }
+  };
+
   return (
     <div className="listProductsBody">
       <Sidebar />
@@ -45,10 +61,25 @@ const ListProducts = () => {
           ))}
         </ul>
       </div>
+
       <div className="findProduct">
         <h2>Pesquisar um produto</h2>
-        <input type="number" placeholder="Id do Produto"></input>
-        <div className="search"></div>
+        <input
+          type="number"
+          placeholder="ID do Produto"
+          value={searchProductId}
+          onChange={(e) => setSearchProductId(e.target.value)}
+        />
+        <button onClick={handleSearchProduct}>Pesquisar</button>
+        <div className="search">
+          {selectedProduct === "notFound" ? (
+            <p>Nenhum produto encontrado com o ID informado.</p>
+          ) : selectedProduct ? (
+            <GetProduct productId={selectedProduct.id} />
+          ) : (
+            <p>Realize uma pesquisa para ver os detalhes do produto.</p>
+          )}
+        </div>
       </div>
     </div>
   );

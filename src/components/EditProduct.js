@@ -9,10 +9,10 @@ const EditProduct = () => {
   if (localStorage.getItem("logged") !== "true") {
     window.location.replace("http://localhost:3000/login");
   }
-  const { productId } = useParams();
+  const productId = Number(useParams().id);
   const options = {
     method: "PATCH",
-    url: "https://interview.t-alpha.com.br/api/products/update-product/__ID__",
+    url: `https://interview.t-alpha.com.br/api/products/update-product/${productId}`,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -102,6 +102,7 @@ const EditProduct = () => {
             value={productData.name}
             onChange={handleChange}
             required
+            className="inputEditProductBody"
           />
         </div>
         <div>
@@ -112,6 +113,7 @@ const EditProduct = () => {
             value={productData.description}
             onChange={handleChange}
             required
+            className="inputEditProductBody"
           />
         </div>
         <div>
@@ -123,6 +125,7 @@ const EditProduct = () => {
             value={productData.price}
             onChange={handleChange}
             required
+            className="inputEditProductBody"
           />
         </div>
         <div>
@@ -134,6 +137,7 @@ const EditProduct = () => {
             value={productData.stock}
             onChange={handleChange}
             required
+            className="inputEditProductBody"
           />
         </div>
         <button type="submit">Salvar Alterações</button>
@@ -141,7 +145,6 @@ const EditProduct = () => {
 
       <section className="currentElement">
         <br />
-        <h2>Cadastro do Produto:</h2>
         <GetProduct />
       </section>
     </div>

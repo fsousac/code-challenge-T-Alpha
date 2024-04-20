@@ -2,11 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const GetProduct = () => {
+const GetProduct = (givenID) => {
   if (localStorage.getItem("logged") !== "true") {
     window.location.replace("http://localhost:3000/login");
   }
-  const productId = Number(useParams().id);
+  let productId;
+  const temp = Number(useParams().id);
+  if (givenID === null) {
+    productId = temp;
+  } else {
+    productId = givenID.productId;
+  }
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -23,16 +29,12 @@ const GetProduct = () => {
       .request(options)
       .then((response) => {
         if (response.data.success === true) {
-          console.log(response.data);
           setProduct(response.data.data);
         } else {
-          console.log(response.data.message);
           document.querySelector(".consult").innerText = response.data.message;
         }
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => {});
   }, [productId]);
 
   return (

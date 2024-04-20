@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-evenly;
   vertical-align: auto;
-  background: linear-gradient(#5960af, #0a0097 60%);
+  background: linear-gradient(-45deg, #5960af, #0a0097);
   width: 100vw;
   height: 10vh;
   position: fixed;

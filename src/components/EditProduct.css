@@ -20,7 +20,7 @@
   font-size: 28px;
 }
 
-.editProductBody input,
+.inputEditProductBody,
 .editProductBody textarea {
   background-color: #afafaf;
   margin-top: 2%;
