@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import "./CreateProduct.css";
+import GetProduct from "./GetProduct";
 
 const CreateProduct = () => {
   if (localStorage.getItem("logged") !== "true") {
@@ -50,8 +51,13 @@ const CreateProduct = () => {
         responseBody = response.data;
         if (responseBody.success === true) {
           console.log("Produto registrado com sucesso");
+          document.querySelector(".createProductBody").appendChild(
+            <div>
+              <GetProduct />
+            </div>
+          );
         } else {
-          console.log(responseBody.message);
+          window.alert(responseBody.message);
         }
       })
       .catch((error) => {
@@ -64,56 +70,67 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="createProductBody">
-      <Sidebar />
-      <br />
-      <h2>Criar Produto</h2>
-      <form onSubmit={handleCreateProduct}>
-        <div>
-          <label htmlFor="name">Nome:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={productData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Descrição:</label>
-          <textarea
-            id="description"
-            name="description"
-            value={productData.description}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="price">Preço:</label>
-          <input
-            type="number"
-            id="price"
-            name="price"
-            value={productData.price}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="stock">Estoque:</label>
-          <input
-            type="number"
-            id="stock"
-            name="stock"
-            value={productData.stock}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Criar Produto</button>
-      </form>
+    <div className="createProductComponent">
+      <div className="sidebarOnComponent">
+        <Sidebar />
+      </div>
+      <div className="createProductBody">
+        <h2 className="newProductH2">Criar Produto</h2>
+        <form onSubmit={handleCreateProduct} className="createProductForm">
+          <div className="newProductDiv">
+            <label htmlFor="name">Nome:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={productData.name}
+              onChange={handleChange}
+              required
+              className="inputCreateProduct"
+            />
+          </div>
+          <div className="newProductDiv">
+            <label htmlFor="description">Descrição:</label>
+            <textarea
+              id="description"
+              name="description"
+              value={productData.description}
+              onChange={handleChange}
+              required
+              className="inputCreateProduct"
+            />
+          </div>
+          <div className="newProductDiv">
+            <label htmlFor="price">Preço:</label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              value={productData.price}
+              onChange={handleChange}
+              required
+              className="inputCreateProduct"
+            />
+          </div>
+          <div className="newProductDiv">
+            <label htmlFor="stock">Estoque:</label>
+            <input
+              type="number"
+              id="stock"
+              name="stock"
+              value={productData.stock}
+              onChange={handleChange}
+              required
+              className="inputCreateProduct"
+            />
+          </div>
+          <div className="newProductSubmitDiv">
+            <button type="submit" className="newProductSubmit">
+              Criar Produto
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

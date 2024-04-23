@@ -16,9 +16,9 @@ const AppRouter = () => {
       <Route element={<Register />} path="/register" />
       <Route element={<CreateProduct />} path="/new-product" />
       <Route element={<ListProducts />} path="/products" />
-      <Route element={<GetProduct />} path="/product/:id" />
-      <Route element={<EditProduct />} path="/edit-product/:id" />
-      <Route element={<DeleteProduct />} path="/delete-product/:id" />
+      <Route element={<GetProduct />} path="/product" />
+      <Route element={<EditProduct />} path="/edit-product" />
+      <Route element={<DeleteProduct />} path="/delete-product" />
     </Routes>
   );
 };

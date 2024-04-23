@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import "./DeleteProduct.css";
-import { useParams } from "react-router-dom";
+import "./CreateProduct.css";
+import GetProduct from "./GetProduct";
 
 const DeleteProduct = () => {
   if (localStorage.getItem("logged") !== "true") {
     window.location.replace("http://localhost:3000/login");
   }
-  const productId = Number(useParams().id);
+
+  const [productId, setProductId] = useState("");
   const [message, setMessage] = useState(null);
 
   const handleDelete = () => {
@@ -31,12 +33,27 @@ const DeleteProduct = () => {
   };
 
   return (
-    <div className="deleteProductBody">
-      <Sidebar />
-      <br />
-      <h2 onLoad={handleDelete}>Deletar Produto</h2>
-      <button onClick={handleDelete}>Deletar Produto</button>
-      {message && <p>{message}</p>}
+    <div className="deleteProductComponent">
+      <div className="sidebarOnComponent">
+        <Sidebar />
+      </div>
+      <div className="deleteProductBody">
+        <h2 className="tittleDelete">Deletar Produto</h2>
+        <GetProduct />
+        <p className="deleteProductP">
+          Digite o ID do produto que deseja deletar:
+        </p>
+        <input
+          type="number"
+          value={productId}
+          onChange={(e) => setProductId(e.target.value)}
+          className="inputIdDelete"
+        />
+        <button onClick={handleDelete} className="submitDelete">
+          Deletar Produto
+        </button>
+        {message && <p>{message}</p>}
+      </div>
     </div>
   );
 };

@@ -1,50 +1,79 @@
-/* Estilos para o componente ListProducts */
-.listProductsBody {
-  width: 100vw;
-  height: 100%;
-  color: aliceblue;
-  display: flex;
-  background: linear-gradient(#2836d3, #252525 60%);
-}
-
-.allProducts,
-.findProduct {
-  margin-top: 10%;
-  width: 45vw;
-  height: 100%;
-}
-
-.listProductsBody h2 {
-  text-align: center;
-  font-size: 52px;
-}
-
-.listProductsBody ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.listProductsBody li {
-  font-size: 28px;
-  margin-bottom: 20px;
+.listProductComponent {
   width: 100%;
+  height: 100%;
 }
 
-.listProductsBody li strong {
-  font-weight: bold;
+.sidebarOnComponent {
+  top: 0%;
+  position: fixed;
 }
 
-.listProductsBody li span {
-  font-weight: normal;
+.listProductsBody {
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 15px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
-.listProductsBody li button {
+.listProductH2 {
+  font-size: 32px;
+  margin-bottom: 4%;
+  margin-top: 0%;
+  margin-left: 25%;
+}
+
+.listProductH3 {
+  font-size: 28px;
+  margin-bottom: 4%;
+  margin-top: 0%;
+  margin-left: 0%;
+}
+
+.labelProduct {
   font-size: 20px;
+  margin-top: 1%;
+}
+
+.inputGetProduct {
+  margin-top: 1%;
+  font-size: 18px;
+}
+.searchProduct {
+  margin-top: 2%;
+  margin-left: 85%;
+  margin-right: 15%;
+}
+
+.consult {
+  font-size: 18px;
+  margin-bottom: 5%;
+}
+
+.allProducts {
+  font-size: 20px;
+}
+
+.searchProduct {
+  padding: 10px 20px;
+  font-size: 23px;
+  margin-right: 0%;
+  color: #fff;
   border: none;
-  background-color: crimson;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #007bff;
+  margin-left: 10px;
+}
+
+.searchProduct:hover {
+  text-decoration: none;
+}
+
+.bodyGetProduct {
+  width: 95%;
 }

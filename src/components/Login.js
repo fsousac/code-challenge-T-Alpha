@@ -41,7 +41,7 @@ function Login() {
           localStorage.setItem("token", token);
           loadHome();
         } else {
-          console.log(responseBody.message);
+          window.alert(responseBody.message);
         }
       })
       .catch((error) => {
@@ -62,9 +62,9 @@ function Login() {
 
   return (
     <div className="loginBody">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
+      <h2 className="loginH2">Login</h2>
+      <form onSubmit={handleLogin} className="loginForm">
+        <div className="loginDiv">
           <label htmlFor="taxNumber">CPF ou CNPJ:</label>
           <input
             type="text"
@@ -75,7 +75,7 @@ function Login() {
             required
           />
         </div>
-        <div>
+        <div className="loginDiv">
           <label htmlFor="password">Senha:</label>
           <input
             type="password"
@@ -87,14 +87,21 @@ function Login() {
             minLength={6}
           />
         </div>
-        <button type="submit" onClick={loadHome}>
-          Entrar
-        </button>
+        <div className="loginSubmitDiv">
+          <button type="submit" onClick={loadHome} className="loginSubmit">
+            Entrar
+          </button>
+        </div>
       </form>
       <div className="registerSection">
-        <Link to="/register" color="inherit">
-          Registrar-se
-        </Link>
+        <p>
+          Clique para{" "}
+          <Link to="/register" color="inherit">
+            {" "}
+            registrar-se
+          </Link>
+          .
+        </p>
       </div>
     </div>
   );

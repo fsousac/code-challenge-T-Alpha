@@ -1,25 +1,45 @@
 .deleteProductBody {
-  width: 100vw;
-  height: 100vh;
-  color: aliceblue;
-  background: linear-gradient(#2836d3, #252525 60%);
-}
-
-.deleteProductBody h2 {
-  text-align: center;
-  font-size: 52px;
-}
-
-.deleteProductBody button {
-  font-size: 25px;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: auto;
+  margin-top: 10%;
   border-radius: 15px;
-  background-color: crimson;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
+  background-color: #f9f9f9;
+  box-shadow: 15px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
-.deleteProductBody p {
-  font-size: 25px;
-  margin-top: 20px;
+.tittleDelete {
+  font-size: 32px;
+  margin-bottom: 4%;
+  margin-top: 0%;
+  margin-left: 33%;
+}
+.deleteProductP {
+  font-size: 24px;
+}
+.inputIdDelete {
+  padding: 10px;
+  width: 95% !important;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.submitDelete {
+  padding: 10px 20px;
+  font-size: 23px;
+  margin-right: 0%;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #007bff;
+  margin-left: 68%;
+}
+
+.submitDelete:hover {
+  text-decoration: none;
 }

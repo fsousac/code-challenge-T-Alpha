@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Login.css";
 
 const Register = () => {
   let token = "";
@@ -50,7 +51,7 @@ const Register = () => {
           localStorage.setItem("logged", true);
           localStorage.setItem("token", token);
         } else {
-          console.log(responseBody.message);
+          window.alert(responseBody.message);
         }
       })
       .catch((error) => {
@@ -63,10 +64,10 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <div>
+    <div className="loginBody">
+      <h2 className="loginH2">Cadastro</h2>
+      <form onSubmit={handleRegister} className="loginForm">
+        <div className="loginDiv">
           <label htmlFor="name">Nome:</label>
           <input
             type="text"
@@ -77,7 +78,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="loginDiv">
           <label htmlFor="taxNumber">CPF ou CNPJ:</label>
           <input
             type="text"
@@ -88,7 +89,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="loginDiv">
           <label htmlFor="mail">E-mail:</label>
           <input
             type="email"
@@ -99,7 +100,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="loginDiv">
           <label htmlFor="phone">Telefone:</label>
           <input
             type="number"
@@ -110,7 +111,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="loginDiv">
           <label htmlFor="password">Senha:</label>
           <input
             type="password"
@@ -122,9 +123,24 @@ const Register = () => {
             minLength={6}
           />
         </div>
-        <button type="submit">Cadastrar</button>
+
+        <div className="loginSubmitDiv">
+          <button type="submit" className="loginSubmit">
+            Cadastrar-se
+          </button>
+        </div>
       </form>
-      <Link to="/login">Logar</Link>
+
+      <div className="loginSection">
+        <p>
+          Clique para{" "}
+          <Link to="/login" color="inherit">
+            {" "}
+            logar-se
+          </Link>
+          .
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,42 +1,26 @@
-.homeBody {
-  width: 100vw;
-  height: 100vh;
-}
-
 .sidebar {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   vertical-align: auto;
-  background: linear-gradient(-45deg, #5960af, #0a0097);
-  width: 100vw;
-  height: 10vh;
+  background: linear-gradient(-45deg, #c00202, #c03f3f);
+  width: 9vw;
+  height: 100vh;
   position: fixed;
+  text-align: center;
 }
 
 .sidebar img,
 .sidebar div img {
   width: 5vw;
   height: 90%;
-  margin-top: 5%;
+  margin: auto;
   cursor: pointer;
 }
 
 .sidebar p {
-  color: white;
-  position: fixed;
-  font-size: 32px;
-  top: 2vh;
-  left: 1vw;
-}
-
-.idSelector {
-  position: relative;
-  background-color: #252525;
-  color: white;
-  font-size: 28px;
-  padding: 0;
-  top: 1.3vh;
-  left: 95vw;
-  width: 3vw;
-  height: 7vh;
+  color: #252525;
+  font-size: 48px;
+  font-style: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }
